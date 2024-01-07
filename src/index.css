@@ -1,0 +1,42 @@
+@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@300;400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply font-[Raleway];
+    @apply bg-[url('../src/assets/denim.webp')];
+    @apply text-white;
+  }
+  li {
+    @apply px-4;
+    @apply cursor-pointer;
+  }
+}
+
+:root {
+  /*========== Colors ==========*/
+
+  --first-color: #124f81;
+  --first-color-alt: #124f81;
+  --black-color: #281719;
+  --title-color: #1b1f22;
+  --text-color: #3f4142;
+  --body-color: #f8f8ff;
+  --button-color: #b23c44;
+  --bg-color: #222831;
+}
+/*=============== BASE ===============*/
+
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+/*=============== ANIMATIONS ===============*/
