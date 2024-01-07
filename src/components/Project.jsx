@@ -30,7 +30,7 @@ export default function Project() {
                 href="https://github.com/erickreisti/fabioportifolio"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-bold text-[#f7f4f3] py-2 px-4 bg-[#3f65ff]  rounded-full hover:bg-[#476cfd] cursor-pointer"
+                className="font-bold text-[#f7f4f3] py-2 px-4 bg-[#3f65ff]  rounded-full hover:bg-[#476cfd]"
               >
                 Github
               </a>
@@ -38,7 +38,7 @@ export default function Project() {
                 href=""
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-semibold text-sky-950 py-2 px-4 bg-[#fdd13f] rounded-full hover:bg-[#e2ba37] cursor-pointer"
+                className="font-semibold text-sky-950 py-2 px-4 bg-[#fdd13f] rounded-full hover:bg-[#e2ba37]"
               >
                 Live Demo
               </a>
