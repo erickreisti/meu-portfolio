@@ -120,7 +120,7 @@ export default function Project() {
             </div>
             <p className="text-xl font-semibold text-[#f7f4f3]">Petshop</p>
             <p className="text-sm font-light text-center text-[#f7f4f3] mb-4">
-              Spa para Animais de Estimação.
+              Spa para animais de estimação.
             </p>
             <div className="w-full absolute bottom-[-25px] flex justify-center gap-8">
               <a
