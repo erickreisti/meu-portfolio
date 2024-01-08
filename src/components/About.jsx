@@ -231,7 +231,7 @@ export default function About() {
         <div className="relative flex flex-col">
           <p className="text-5xl font-bold pb-4">Sobre mim</p>
           <p className="font-light text-justify">
-            Bem vindos ao meu portifólio, estou empolgado em mostrar-los! Meu
+            Bem vindos, estou empolgado em mostrar-los ao meu Portifolio! Meu
             nome é Érick Reis, sou tecnólogo em Tecnologia da Informação, e
             graduado em Sistemas de Informação. Trabalhei muitos anos em algumas
             áreas dentro da T.I, e desde então, venho enviesado no
