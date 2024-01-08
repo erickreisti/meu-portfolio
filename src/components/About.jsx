@@ -232,8 +232,9 @@ export default function About() {
           <p className="text-5xl font-bold pb-4">Sobre mim</p>
           <p className="font-light text-justify">
             Bem vindos, estou empolgado em mostrar-los ao meu Portifolio! Meu
-            nome é <span className="text-yellow-500">Érick Reis</span>, sou
-            tecnólogo em Tecnologia da Informação, e graduado em Sistemas de
+            nome é
+            <span className="text-yellow-300 font-semibold">Érick Reis</span>,
+            sou tecnólogo em Tecnologia da Informação, e graduado em Sistemas de
             Informação. Trabalhei muitos anos em algumas áreas dentro da T.I, e
             desde então, venho enviesado no desenvolvimento web. Gosto muito do
             processo de desenvolvimento desde a parte de planejamento até qual
