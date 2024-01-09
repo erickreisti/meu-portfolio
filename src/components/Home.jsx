@@ -59,7 +59,7 @@ export default function Home() {
               href="https://twitter.com/ereislima"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-[80px] h-[80px] flex flex-col items-center justify-center text-sky-200 font-bold bg-[#3f65ff] rounded-full hover:bg-[#3454d1]"
+              className="w-[60px] h-[60px] flex flex-col items-center justify-center text-sky-200 font-bold bg-[#3f65ff] rounded-full hover:bg-[#3454d1]"
             >
               <FaXTwitter size={30} />
             </a>
@@ -67,7 +67,7 @@ export default function Home() {
               href="https://github.com/erickreisti"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-[80px] h-[80px] flex flex-col items-center justify-center text-sky-200 font-bold bg-[#3f65ff] rounded-full hover:bg-[#3454d1]"
+              className="w-[60px] h-[60px] flex flex-col items-center justify-center text-sky-200 font-bold bg-[#3f65ff] rounded-full hover:bg-[#3454d1]"
             >
               <FaGithub size={40} />
             </a>
