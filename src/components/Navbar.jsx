@@ -1,116 +1,122 @@
 import { useState } from "react";
-import { FaBars, FaXmark, FaMoon } from "react-icons/fa6";
+import { FaBars, FaXmark, FaSun, FaMoon } from "react-icons/fa6";
 import { Link } from "react-scroll";
-import hash from "../assets/hash-white.svg";
+import hashWhite from "../assets/hash-white.svg";
+import hashBlue from "../assets/hash-blue.svg";
+import { useTheme } from "../hooks/useTheme";
 
 export default function Navbar() {
   const [nav, setNav] = useState(false);
+  const { darkMode, toggleDarkMode } = useTheme();
   const handleClick = () => setNav(!nav);
-  const liMenu = "hover:text-[#3f65ff]";
+  const logoSrc = darkMode ? hashWhite : hashBlue;
 
   return (
-    <nav className="fixed w-full bg-[url('../src/assets/denim.webp')] flex justify-between items-center px-6 py-6 z-10">
+    <nav className="fixed w-full bg-denim-like flex justify-between items-center px-6 py-6 z-50">
       <div>
         <img
           className="w-[80px] object-contain"
-          src={hash}
-          alt="logo Erick Reis"
+          src={logoSrc}
+          alt="Logo Erick Reis"
         />
       </div>
 
-      {/* Menu */}
-      <ul className="hidden md:flex">
-        <li className={liMenu}>
-          <Link to="home" smooth={true} duration={500}>
+      <ul className="hidden md:flex gap-8">
+        <li>
+          <Link
+            to="home"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-400 cursor-pointer"
+          >
             Home
           </Link>
         </li>
-        <li className={liMenu}>
-          <Link to="about" smooth={true} duration={500} offset={-250}>
+        <li>
+          <Link
+            to="about"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-400 cursor-pointer"
+          >
             Sobre
           </Link>
         </li>
-        <li className={liMenu}>
-          <Link to="skills" smooth={true} duration={500} offset={-150}>
+        <li>
+          <Link
+            to="skills"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-400 cursor-pointer"
+          >
             Skills
           </Link>
         </li>
-        <li className={liMenu}>
-          <Link to="project" smooth={true} duration={500} offset={-150}>
+        <li>
+          <Link
+            to="project"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-400 cursor-pointer"
+          >
             Projetos
           </Link>
         </li>
-        <li className={liMenu}>
-          <Link to="contact" smooth={true} duration={500} offset={-150}>
+        <li>
+          <Link
+            to="contact"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-400 cursor-pointer"
+          >
             Contato
           </Link>
         </li>
       </ul>
 
-      <div className="hidden md:flex">
-        <FaMoon size={20} />
-      </div>
-
-      {/* Menu Hamburguer */}
-      <div onClick={handleClick} className="md:hidden z-10">
-        {!nav ? <FaBars size={20} /> : <FaXmark size={20} />}
-      </div>
-
-      {/* Mobile menu */}
-      <ul
-        className={
-          !nav
-            ? "hidden"
-            : "absolute top-0 left-0 w-full h-screen bg-[url('../src/assets/denim.webp')] flex flex-col justify-center items-center"
-        }
+      <button
+        onClick={toggleDarkMode}
+        className="hidden md:block p-2 rounded-full hover:bg-white/10 transition"
+        aria-label={darkMode ? "Ativar modo claro" : "Ativar modo escuro"}
       >
-        <li className="py-6 text-4xl hover:text-[#3f65ff]">
-          {" "}
+        {darkMode ? (
+          <FaSun className="text-yellow-400" />
+        ) : (
+          <FaMoon className="text-blue-500" />
+        )}
+      </button>
+
+      <div onClick={handleClick} className="md:hidden z-10 cursor-pointer">
+        {!nav ? <FaBars size={24} /> : <FaXmark size={24} />}
+      </div>
+
+      <ul
+        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-denim-like flex flex-col items-center justify-center transition-transform duration-300 ${
+          nav ? "translate-x-0" : "translate-x-full"
+        }`}
+      >
+        <li className="py-4 text-2xl">
           <Link onClick={handleClick} to="home" smooth={true} duration={500}>
             Home
           </Link>
         </li>
-        <li className="py-6 text-4xl hover:text-[#3f65ff]">
-          <Link
-            onClick={handleClick}
-            offset={-150}
-            to="about"
-            smooth={true}
-            duration={500}
-          >
+        <li className="py-4 text-2xl">
+          <Link onClick={handleClick} to="about" smooth={true} duration={500}>
             Sobre
           </Link>
         </li>
-        <li className="py-6 text-4xl hover:text-[#3f65ff]">
-          <Link
-            onClick={handleClick}
-            offset={-150}
-            to="skills"
-            smooth={true}
-            duration={500}
-          >
+        <li className="py-4 text-2xl">
+          <Link onClick={handleClick} to="skills" smooth={true} duration={500}>
             Skills
           </Link>
         </li>
-        <li className="py-6 text-4xl hover:text-[#3f65ff]">
-          <Link
-            onClick={handleClick}
-            offset={-150}
-            to="project"
-            smooth={true}
-            duration={500}
-          >
+        <li className="py-4 text-2xl">
+          <Link onClick={handleClick} to="project" smooth={true} duration={500}>
             Projetos
           </Link>
         </li>
-        <li className="py-6 text-4xl hover:text-[#3f65ff]">
-          <Link
-            onClick={handleClick}
-            offset={-150}
-            to="contact"
-            smooth={true}
-            duration={500}
-          >
+        <li className="py-4 text-2xl">
+          <Link onClick={handleClick} to="contact" smooth={true} duration={500}>
             Contato
           </Link>
         </li>
