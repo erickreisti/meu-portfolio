@@ -11,12 +11,13 @@ export default function Contact() {
 
   const sendEmail = (e) => {
     e.preventDefault();
+
     emailjs
       .sendForm(
-        "service_4s3t8is",
-        "template_jyeoh9n",
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         form.current,
-        "0PCfxOPAkpZ_HlAAN"
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       )
       .then(() => {
         setSuccess(true);
