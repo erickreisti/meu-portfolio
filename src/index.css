@@ -3,14 +3,22 @@
 @tailwind utilities;
 
 /* =============== BACKGROUND =============== */
-body {
+/* Fundo padrão (dark mode) */
+.dark body {
   @apply bg-[#0f172a] text-white font-[Raleway];
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
+/* ✅ Fundo branco puro no modo light */
+body {
+  @apply bg-[#f2f0ef] text-gray-900 font-[Raleway];
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
 /* =============== CUSTOM BACKGROUNDS =============== */
-/* Tema Escuro (Padrão) */
+/* Mantém o denim-like só no modo escuro */
 .bg-denim-like {
   @apply bg-[#0f172a] text-white relative;
 }
@@ -40,13 +48,13 @@ body {
   pointer-events: none;
 }
 
-/* ✅ Tema Claro — Premium White */
+/* ✅ Remove o denim-like no modo light */
 .dark .bg-denim-like {
-  @apply bg-white text-gray-800;
+  @apply bg-transparent;
 }
 
 .dark .bg-denim-like::before {
-  content: none; /* Remove padrão denim no light */
+  content: none;
 }
 
 @keyframes denim-depth {
