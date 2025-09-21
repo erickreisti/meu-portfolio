@@ -12,7 +12,19 @@ export default function Navbar() {
   const logoSrc = darkMode ? hashWhite : hashBlue;
 
   return (
-    <nav className="fixed w-full bg-denim-like flex justify-between items-center px-6 py-6 z-50">
+    <nav
+      className={`
+        fixed w-full flex justify-between items-center px-6 py-4 z-50
+        backdrop-blur-xl border transition-all duration-300
+        ${
+          darkMode
+            ? "bg-white/10 border-white/20"
+            : "bg-white/80 border-gray-200 text-gray-800"
+        }
+      `}
+      role="navigation"
+      aria-label="Menu principal"
+    >
       <div>
         <img
           className="w-[80px] object-contain"
@@ -27,7 +39,7 @@ export default function Navbar() {
             to="home"
             smooth={true}
             duration={500}
-            className="hover:text-blue-400 cursor-pointer"
+            className="hover:text-blue-500 cursor-pointer font-medium transition-colors"
           >
             Home
           </Link>
@@ -37,7 +49,7 @@ export default function Navbar() {
             to="about"
             smooth={true}
             duration={500}
-            className="hover:text-blue-400 cursor-pointer"
+            className="hover:text-blue-500 cursor-pointer font-medium transition-colors"
           >
             Sobre
           </Link>
@@ -47,7 +59,7 @@ export default function Navbar() {
             to="skills"
             smooth={true}
             duration={500}
-            className="hover:text-blue-400 cursor-pointer"
+            className="hover:text-blue-500 cursor-pointer font-medium transition-colors"
           >
             Skills
           </Link>
@@ -57,7 +69,7 @@ export default function Navbar() {
             to="project"
             smooth={true}
             duration={500}
-            className="hover:text-blue-400 cursor-pointer"
+            className="hover:text-blue-500 cursor-pointer font-medium transition-colors"
           >
             Projetos
           </Link>
@@ -67,7 +79,7 @@ export default function Navbar() {
             to="contact"
             smooth={true}
             duration={500}
-            className="hover:text-blue-400 cursor-pointer"
+            className="hover:text-blue-500 cursor-pointer font-medium transition-colors"
           >
             Contato
           </Link>
@@ -86,37 +98,81 @@ export default function Navbar() {
         )}
       </button>
 
-      <div onClick={handleClick} className="md:hidden z-10 cursor-pointer">
+      <div
+        onClick={handleClick}
+        className="md:hidden z-10 cursor-pointer p-2 rounded-full hover:bg-white/10 transition"
+        aria-expanded={nav}
+        aria-controls="mobile-menu"
+        tabIndex={0}
+      >
         {!nav ? <FaBars size={24} /> : <FaXmark size={24} />}
       </div>
 
       <ul
-        className={`md:hidden fixed top-0 left-0 w-full h-screen bg-denim-like flex flex-col items-center justify-center transition-transform duration-300 ${
-          nav ? "translate-x-0" : "translate-x-full"
-        }`}
+        id="mobile-menu"
+        className={`
+          md:hidden fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center
+          transition-transform duration-300 ease-out transform
+          ${
+            darkMode
+              ? "bg-white/95 backdrop-blur-xl"
+              : "bg-white/95 backdrop-blur-xl"
+          }
+          ${nav ? "translate-x-0" : "translate-x-full"}
+        `}
       >
         <li className="py-4 text-2xl">
-          <Link onClick={handleClick} to="home" smooth={true} duration={500}>
+          <Link
+            onClick={handleClick}
+            to="home"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-500 transition-colors"
+          >
             Home
           </Link>
         </li>
         <li className="py-4 text-2xl">
-          <Link onClick={handleClick} to="about" smooth={true} duration={500}>
+          <Link
+            onClick={handleClick}
+            to="about"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-500 transition-colors"
+          >
             Sobre
           </Link>
         </li>
         <li className="py-4 text-2xl">
-          <Link onClick={handleClick} to="skills" smooth={true} duration={500}>
+          <Link
+            onClick={handleClick}
+            to="skills"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-500 transition-colors"
+          >
             Skills
           </Link>
         </li>
         <li className="py-4 text-2xl">
-          <Link onClick={handleClick} to="project" smooth={true} duration={500}>
+          <Link
+            onClick={handleClick}
+            to="project"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-500 transition-colors"
+          >
             Projetos
           </Link>
         </li>
         <li className="py-4 text-2xl">
-          <Link onClick={handleClick} to="contact" smooth={true} duration={500}>
+          <Link
+            onClick={handleClick}
+            to="contact"
+            smooth={true}
+            duration={500}
+            className="hover:text-blue-500 transition-colors"
+          >
             Contato
           </Link>
         </li>

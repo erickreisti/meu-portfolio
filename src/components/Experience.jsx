@@ -1,6 +1,4 @@
 import { useTheme } from "../hooks/useTheme";
-
-// Importe os ícones do react-icons
 import { FaReact, FaJs, FaFigma } from "react-icons/fa";
 import {
   SiTailwindcss,
@@ -10,12 +8,11 @@ import {
   SiPrisma,
   SiPostgresql,
 } from "react-icons/si";
-import { TbBrandAdobe } from "react-icons/tb"; // Adobe XD
+import { TbBrandAdobe } from "react-icons/tb";
 
 export default function Experience() {
   const { darkMode } = useTheme();
 
-  // Skills técnicas (sem HTML e CSS)
   const technicalSkills = [
     { name: "JavaScript", icon: FaJs, color: "text-yellow-500" },
     { name: "TypeScript", icon: SiTypescript, color: "text-blue-600" },
@@ -23,20 +20,17 @@ export default function Experience() {
     {
       name: "Next.js",
       icon: SiNextdotjs,
-      // ✅ Força cor branca no modo light (ícone original é preto)
       color: darkMode ? "text-white" : "text-gray-800",
     },
     { name: "Tailwind", icon: SiTailwindcss, color: "text-cyan-500" },
     { name: "shadcn/ui", icon: FaReact, color: "text-violet-500" },
   ];
 
-  // Ferramentas de Mockup
   const mockupTools = [
     { name: "Figma", icon: FaFigma, color: "text-purple-600" },
     { name: "Adobe XD", icon: TbBrandAdobe, color: "text-red-500" },
   ];
 
-  // Banco de Dados & ORM
   const databaseTools = [
     { name: "PostgreSQL", icon: SiPostgresql, color: "text-blue-700" },
     { name: "Supabase", icon: SiSupabase, color: "text-green-600" },
@@ -46,7 +40,6 @@ export default function Experience() {
   return (
     <section id="skills" className="py-24 px-6">
       <div className="max-w-[1280px] mx-auto">
-        {/* Container principal */}
         <div
           className={`
           backdrop-blur-xl rounded-3xl border shadow-2xl p-8
@@ -63,7 +56,6 @@ export default function Experience() {
             </p>
           </div>
 
-          {/* Seção de Skills Técnicas */}
           <div className="mb-12">
             <h3
               className={`text-2xl font-bold mb-6 text-center ${
@@ -101,7 +93,6 @@ export default function Experience() {
             </div>
           </div>
 
-          {/* Seção de Ferramentas de Mockup */}
           <div className="mb-12">
             <h3
               className={`text-2xl font-bold mb-6 text-center ${
@@ -146,7 +137,6 @@ export default function Experience() {
             </div>
           </div>
 
-          {/* Seção de Banco de Dados & ORM */}
           <div>
             <h3
               className={`text-2xl font-bold mb-6 text-center ${
