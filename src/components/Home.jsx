@@ -8,7 +8,7 @@ import { useScrollPosition } from "../hooks/useScrollPosition";
 export default function Home() {
   const { darkMode } = useTheme();
   const scrollPosition = useScrollPosition();
-  const showArrow = scrollPosition < 80; // ✅ Altura do Navbar (~80px)
+  const showArrow = scrollPosition < 80;
 
   return (
     <header
@@ -96,7 +96,7 @@ export default function Home() {
               <FaGithub className="text-white" size={20} />
             </a>
             <a
-              href="#" // ← Substitua pela sua URL do Instagram
+              href="#"
               target="_blank"
               rel="noopener noreferrer"
               className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 rounded-full transition-all duration-300 transform hover:scale-105"
@@ -107,8 +107,6 @@ export default function Home() {
           </div>
         </div>
       </div>
-
-      {/* ✅ Seta de Scroll - SOME AO SAIR DO NAVBAR */}
       {showArrow && (
         <div className="fixed inset-x-0 bottom-6 flex justify-center z-20 pointer-events-none">
           <div className="flex flex-col items-center animate-bounce pointer-events-auto">
