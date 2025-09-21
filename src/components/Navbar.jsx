@@ -19,7 +19,7 @@ export default function Navbar() {
         ${
           darkMode
             ? "bg-white/10 border-white/20"
-            : "bg-white/80 border-gray-200 text-gray-800"
+            : "bg-white border-gray-200 text-gray-800"
         }
       `}
       role="navigation"
@@ -108,26 +108,39 @@ export default function Navbar() {
         {!nav ? <FaBars size={24} /> : <FaXmark size={24} />}
       </div>
 
+      {/* Menu mobile com toggle dark mode*/}
       <ul
         id="mobile-menu"
         className={`
           md:hidden fixed top-0 left-0 w-full h-screen flex flex-col items-center justify-center
           transition-transform duration-300 ease-out transform
-          ${
-            darkMode
-              ? "bg-white/95 backdrop-blur-xl"
-              : "bg-white/95 backdrop-blur-xl"
-          }
+          ${darkMode ? "bg-[#0f172a] text-white" : "bg-white text-gray-800"}
           ${nav ? "translate-x-0" : "translate-x-full"}
         `}
       >
+        {/* Barra superior com toggle e botão de fechar */}
+        <div className="absolute top-8 right-[100px] flex gap-2 items-center">
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-full hover:bg-white/10 transition"
+            aria-label={darkMode ? "Ativar modo claro" : "Ativar modo escuro"}
+          >
+            {darkMode ? (
+              <FaSun className="text-yellow-400" size={20} />
+            ) : (
+              <FaMoon className="text-blue-500" size={20} />
+            )}
+          </button>
+        </div>
+
+        {/* Itens do Menu  */}
         <li className="py-4 text-2xl">
           <Link
             onClick={handleClick}
             to="home"
             smooth={true}
             duration={500}
-            className="hover:text-blue-500 transition-colors"
+            className="hover:text-blue-400 transition-colors"
           >
             Home
           </Link>
@@ -138,7 +151,7 @@ export default function Navbar() {
             to="about"
             smooth={true}
             duration={500}
-            className="hover:text-blue-500 transition-colors"
+            className="hover:text-blue-400 transition-colors"
           >
             Sobre
           </Link>
@@ -149,7 +162,7 @@ export default function Navbar() {
             to="skills"
             smooth={true}
             duration={500}
-            className="hover:text-blue-500 transition-colors"
+            className="hover:text-blue-400 transition-colors"
           >
             Skills
           </Link>
@@ -160,7 +173,7 @@ export default function Navbar() {
             to="project"
             smooth={true}
             duration={500}
-            className="hover:text-blue-500 transition-colors"
+            className="hover:text-blue-400 transition-colors"
           >
             Projetos
           </Link>
@@ -171,7 +184,7 @@ export default function Navbar() {
             to="contact"
             smooth={true}
             duration={500}
-            className="hover:text-blue-500 transition-colors"
+            className="hover:text-blue-400 transition-colors"
           >
             Contato
           </Link>
