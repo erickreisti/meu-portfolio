@@ -31,7 +31,7 @@ export default function Project() {
       title: "Venda de Planos",
       description: "Votado a marketing digital e blogs.",
       image: img03,
-      github: null,
+      github: "https://github.com/erickreisti/biofitness",
       live: null,
     },
     {
