@@ -47,7 +47,7 @@ export default function Project() {
       title: "Institucional",
       description: "Inspirado na Copa do Mundo Qatar 2022.",
       image: img05,
-      github: null,
+      github: "https://github.com/erickreisti/world-cup-2022",
       live: null,
     },
     {
