@@ -39,7 +39,7 @@ export default function Project() {
       title: "Petshop",
       description: "Spa para animais de estimação.",
       image: img04,
-      github: null,
+      github: "https://github.com/erickreisti/petcare-petshop",
       live: null,
     },
     {
