@@ -1,7 +1,7 @@
 import img01 from "../assets/website1.jpeg";
 import img02 from "../assets/website2.jpeg";
 import img03 from "../assets/website3.png";
-import img04 from "../assets/website4.jpeg";
+import img04 from "../assets/website4.png";
 import img05 from "../assets/website5.png";
 import img06 from "../assets/website6.jpeg";
 import { useTheme } from "../hooks/useTheme";
