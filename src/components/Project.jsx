@@ -1,4 +1,4 @@
-import img01 from "../assets/website1.jpeg";
+import img01 from "../assets/website1.png";
 import img02 from "../assets/website2.png";
 import img03 from "../assets/website3.png";
 import img04 from "../assets/website4.png";
@@ -12,48 +12,54 @@ export default function Project() {
   const projects = [
     {
       id: 1,
-      title: "Portfolio",
-      description: "Enviesado em exibir os serviços prestados.",
+      title: "CodeCraft",
+      description:
+        "Plataforma de cursos fullstack com stack moderna: catálogo, carrinho, checkout, dashboard de aluno e adminitrador integrados.",
       image: img01,
       github: "https://github.com/erickreisti/fabioportifolio",
       live: null,
     },
     {
       id: 2,
-      title: "Vitrine de Vinhos",
-      description: "Destinado a apresentação de produtos.",
+      title: "Wine for Life",
+      description:
+        "Desenvolvimento de site institucional para vinícola, criando identidade visual que transmite tradição e frescor através de design limpo e conteúdo persuasivo.",
       image: img02,
       github: "https://github.com/erickreisti/wineforlife",
       live: null,
     },
     {
       id: 3,
-      title: "Venda de Planos",
-      description: "Votado a marketing digital e blogs.",
+      title: "Bio Fitness",
+      description:
+        "Projeto de landing page com design clean e copy estratégico para conversão em marca do segmento wellness e nutrição.",
       image: img03,
       github: "https://github.com/erickreisti/biofitness",
       live: null,
     },
     {
       id: 4,
-      title: "Petshop",
-      description: "Spa para animais de estimação.",
+      title: "Petcare",
+      description:
+        "SSite para petshop com foco em grooming e cuidados veterinários, oferecendo serviços especializados para saúde e bem-estar dos animais de estimação.",
       image: img04,
       github: "https://github.com/erickreisti/petcare-petshop",
       live: null,
     },
     {
       id: 5,
-      title: "Institucional",
-      description: "Inspirado na Copa do Mundo Qatar 2022.",
+      title: "Copa do Mundo",
+      description:
+        "Site conceitual para a Seleção Brasileira na Copa do Mundo FIFA 2022, com design patriótico e navegação temática inspirada no universo do futebol.",
       image: img05,
       github: "https://github.com/erickreisti/world-cup-2022",
       live: null,
     },
     {
       id: 6,
-      title: "Cardápio de Produtos",
-      description: "Exibição de cardápio e contato.",
+      title: "Boi de Ouro",
+      description:
+        "Landing page premium para churrascaria com cardápio digital integrado, sistema de pedidos online e design que une tradição gaúcha à modernidade.",
       image: img06,
       github: "https://github.com/erickreisti/projectboi",
       live: null,
