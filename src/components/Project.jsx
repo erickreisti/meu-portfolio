@@ -26,7 +26,7 @@ export default function Project() {
         "Desenvolvimento de site institucional para vinícola, criando identidade visual que transmite tradição e frescor através de design limpo e conteúdo persuasivo.",
       image: img02,
       github: "https://github.com/erickreisti/wineforlife",
-      live: null,
+      live: "https://erickreisti.github.io/wine-for-life/",
     },
     {
       id: 3,
