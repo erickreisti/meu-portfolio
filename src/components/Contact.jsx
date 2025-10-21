@@ -21,12 +21,8 @@ export default function Contact() {
     };
 
     try {
-      // URL muda automaticamente no Vercel
-      const baseUrl = import.meta.env.PROD
-        ? "https://" + window.location.hostname
-        : "http://localhost:3000";
-
-      const response = await fetch(`${baseUrl}/api/send-email`, {
+      // URL correta para Vercel
+      const response = await fetch("/api/send-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -34,18 +30,20 @@ export default function Contact() {
         body: JSON.stringify(data),
       });
 
+      // Melhor tratamento de erro
+      if (!response.ok) {
+        const errorText = await response.text();
+        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      }
+
       const result = await response.json();
 
-      if (response.ok) {
-        setSuccess(true);
-        form.current.reset();
-        setTimeout(() => setSuccess(false), 5000);
-      } else {
-        throw new Error(result.error || "Erro ao enviar mensagem");
-      }
+      setSuccess(true);
+      form.current.reset();
+      setTimeout(() => setSuccess(false), 5000);
     } catch (error) {
       console.error("Erro ao enviar:", error);
-      alert("Erro ao enviar mensagem. Tente novamente.");
+      alert(`Erro ao enviar mensagem: ${error.message}`);
     } finally {
       setIsLoading(false);
     }
