@@ -3,7 +3,7 @@ import img02 from "../assets/website2.png";
 import img03 from "../assets/website3.png";
 import img04 from "../assets/website4.png";
 import img05 from "../assets/website5.png";
-import img06 from "../assets/website6.jpeg";
+import img06 from "../assets/website6.png";
 import { useTheme } from "../hooks/useTheme";
 
 export default function Project() {
@@ -62,7 +62,7 @@ export default function Project() {
         "Landing page premium para churrascaria com cardápio digital integrado, sistema de pedidos online e design que une tradição gaúcha à modernidade.",
       image: img06,
       github: "https://github.com/erickreisti/projectboi",
-      live: null,
+      live: "https://erickreisti.github.io/projectboi/",
     },
   ];
 
