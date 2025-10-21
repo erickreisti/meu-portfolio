@@ -2,6 +2,7 @@ import { useRef, useState } from "react";
 import { useLottie } from "lottie-react";
 import sendMessage from "../assets/lottie-message.json";
 import { useTheme } from "../hooks/useTheme";
+import emailjs from "@emailjs/browser";
 
 export default function Contact() {
   const form = useRef();
@@ -13,35 +14,33 @@ export default function Contact() {
     e.preventDefault();
     setIsLoading(true);
 
-    const formData = new FormData(form.current);
-    const data = {
-      name: formData.get("name"),
-      email: formData.get("email"),
-      message: formData.get("message"),
-    };
-
     try {
-      // URL absoluta para produção
-      const baseUrl = window.location.origin;
-      const response = await fetch(`${baseUrl}/api/send-email`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data),
-      });
+      // Configurações do EmailJS
+      const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+      const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+      const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-      if (!response.ok) {
-        const errorText = await response.text();
-        throw new Error(`HTTP ${response.status}: ${errorText}`);
+      // Validação das variáveis de ambiente
+      if (!serviceId || !templateId || !publicKey) {
+        throw new Error(
+          "Configuração do EmailJS não encontrada. Verifique as variáveis de ambiente."
+        );
       }
 
-      const result = await response.json();
+      // Envia o email usando EmailJS
+      const result = await emailjs.sendForm(
+        serviceId,
+        templateId,
+        form.current,
+        publicKey
+      );
+
+      console.log("Email enviado com sucesso:", result);
       setSuccess(true);
       form.current.reset();
       setTimeout(() => setSuccess(false), 5000);
     } catch (error) {
-      console.error("Erro ao enviar:", error);
+      console.error("Erro ao enviar email:", error);
       alert(`Erro ao enviar mensagem: ${error.message}`);
     } finally {
       setIsLoading(false);
@@ -75,7 +74,7 @@ export default function Contact() {
                 <input
                   required
                   type="text"
-                  name="name"
+                  name="user_name"
                   placeholder="Nome"
                   className={`w-full p-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     darkMode
@@ -86,7 +85,7 @@ export default function Contact() {
                 <input
                   required
                   type="email"
-                  name="email"
+                  name="user_email"
                   placeholder="E-mail"
                   className={`w-full p-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     darkMode
