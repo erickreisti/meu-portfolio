@@ -1,9 +1,9 @@
 import img01 from "../assets/website1.webp";
 import img02 from "../assets/website2.webp";
-import img03 from "../assets/website3.2.webp";
-import img04 from "../assets/website4.2.webp";
-import img05 from "../assets/website5.2.webp";
-import img06 from "../assets/website6.2.webp";
+import img03 from "../assets/website3.webp";
+import img04 from "../assets/website4.webp";
+import img05 from "../assets/website5.webp";
+import img06 from "../assets/website6.webp";
 import { useTheme } from "../hooks/useTheme";
 
 export default function Project() {
