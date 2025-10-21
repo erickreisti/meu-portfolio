@@ -1,5 +1,4 @@
 import { useRef, useState } from "react";
-import emailjs from "emailjs-com";
 import { useLottie } from "lottie-react";
 import sendMessage from "../assets/lottie-message.json";
 import { useTheme } from "../hooks/useTheme";
@@ -7,27 +6,49 @@ import { useTheme } from "../hooks/useTheme";
 export default function Contact() {
   const form = useRef();
   const [success, setSuccess] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const { darkMode } = useTheme();
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
+    setIsLoading(true);
 
-    emailjs
-      .sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        form.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      )
-      .then(() => {
-        setSuccess(true);
-        e.target.reset();
-        setTimeout(() => setSuccess(false), 5000);
-      })
-      .catch((error) => {
-        console.error("Erro ao enviar:", error);
-        alert("Erro ao enviar mensagem. Tente novamente.");
+    const formData = new FormData(form.current);
+    const data = {
+      name: formData.get("name"),
+      email: formData.get("email"),
+      message: formData.get("message"),
+    };
+
+    try {
+      // URL muda automaticamente no Vercel
+      const baseUrl = import.meta.env.PROD
+        ? "https://" + window.location.hostname
+        : "http://localhost:3000";
+
+      const response = await fetch(`${baseUrl}/api/send-email`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
       });
+
+      const result = await response.json();
+
+      if (response.ok) {
+        setSuccess(true);
+        form.current.reset();
+        setTimeout(() => setSuccess(false), 5000);
+      } else {
+        throw new Error(result.error || "Erro ao enviar mensagem");
+      }
+    } catch (error) {
+      console.error("Erro ao enviar:", error);
+      alert("Erro ao enviar mensagem. Tente novamente.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const options = { animationData: sendMessage, loop: true };
@@ -61,8 +82,8 @@ export default function Contact() {
                   placeholder="Nome"
                   className={`w-full p-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     darkMode
-                      ? "bg-white/10 border-white/20 text-white"
-                      : "bg-white border-gray-300 text-gray-800"
+                      ? "bg-white/10 border-white/20 text-white placeholder-gray-300"
+                      : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
                   }`}
                 />
                 <input
@@ -72,8 +93,8 @@ export default function Contact() {
                   placeholder="E-mail"
                   className={`w-full p-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     darkMode
-                      ? "bg-white/10 border-white/20 text-white"
-                      : "bg-white border-gray-300 text-gray-800"
+                      ? "bg-white/10 border-white/20 text-white placeholder-gray-300"
+                      : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
                   }`}
                 />
                 <textarea
@@ -83,8 +104,8 @@ export default function Contact() {
                   placeholder="Mensagem"
                   className={`w-full p-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 resize-none ${
                     darkMode
-                      ? "bg-white/10 border-white/20 text-white"
-                      : "bg-white border-gray-300 text-gray-800"
+                      ? "bg-white/10 border-white/20 text-white placeholder-gray-300"
+                      : "bg-white border-gray-300 text-gray-800 placeholder-gray-500"
                   }`}
                 ></textarea>
 
@@ -103,9 +124,21 @@ export default function Contact() {
 
                 <button
                   type="submit"
-                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 hover:from-blue-700 hover:to-purple-700 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform hover:scale-105"
+                  disabled={isLoading}
+                  className={`w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white font-semibold py-4 px-6 rounded-xl transition-all duration-300 transform ${
+                    isLoading
+                      ? "opacity-50 cursor-not-allowed"
+                      : "hover:from-blue-700 hover:to-purple-700 hover:scale-105"
+                  }`}
                 >
-                  Enviar Mensagem
+                  {isLoading ? (
+                    <div className="flex items-center justify-center">
+                      <div className="animate-spin rounded-full h-5 w-5 border-b-2 border-white mr-2"></div>
+                      Enviando...
+                    </div>
+                  ) : (
+                    "Enviar Mensagem"
+                  )}
                 </button>
               </form>
             </div>
