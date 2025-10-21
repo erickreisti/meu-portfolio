@@ -23,7 +23,7 @@ export default function Project() {
       id: 2,
       title: "Wine for Life",
       description:
-        "Desenvolvimento de site institucional para vinícola, criando identidade visual que transmite tradição e frescor através de design limpo e conteúdo persuasivo.",
+        "Desenvolvimento de site institucional para vinícola, criando identidade visual que transmite tradição e frescor através de design persuasivo e limpo.",
       image: img02,
       github: "https://github.com/erickreisti/wine-for-life",
       live: "https://erickreisti.github.io/wine-for-life/",
@@ -44,7 +44,7 @@ export default function Project() {
         "SSite para petshop com foco em grooming e cuidados veterinários, oferecendo serviços especializados para saúde e bem-estar dos animais de estimação.",
       image: img04,
       github: "https://github.com/erickreisti/petcare-petshop",
-      live: null,
+      live: "https://erickreisti.github.io/petcare-petshop/",
     },
     {
       id: 5,
