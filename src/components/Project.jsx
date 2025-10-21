@@ -35,7 +35,7 @@ export default function Project() {
         "Projeto de landing page com design clean e copy estratégico para conversão em marca do segmento wellness e nutrição.",
       image: img03,
       github: "https://github.com/erickreisti/biofitness",
-      live: null,
+      live: "https://erickreisti.github.io/biofitness/",
     },
     {
       id: 4,
@@ -128,7 +128,7 @@ export default function Project() {
                     </span>
                   )}
 
-                  {/* Botão Live - NOVO */}
+                  {/* Botão Live */}
                   {project.live ? (
                     <a
                       href={project.live}
