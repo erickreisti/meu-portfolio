@@ -11,9 +11,13 @@ export default function Contact() {
   const [errors, setErrors] = useState({});
   const { darkMode } = useTheme();
 
-  // Função para capitalizar a primeira letra do nome
-  const capitalizeName = (name) => {
-    return name.charAt(0).toUpperCase() + name.slice(1).toLowerCase();
+  // Função para capitalizar a primeira letra de cada palavra
+  const capitalizeWords = (text) => {
+    return text
+      .toLowerCase()
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+      .join(" ");
   };
 
   // Função de validação
@@ -55,14 +59,18 @@ export default function Contact() {
     const cursorPosition = input.selectionStart;
     const originalValue = input.value;
 
-    // Aplica capitalização
-    const capitalizedValue = capitalizeName(originalValue);
+    // Aplica capitalização em todas as palavras
+    const capitalizedValue = capitalizeWords(originalValue);
 
     // Atualiza o valor mantendo a posição do cursor
     if (originalValue !== capitalizedValue) {
+      const lengthDifference = capitalizedValue.length - originalValue.length;
       input.value = capitalizedValue;
-      // Restaura a posição do cursor
-      input.setSelectionRange(cursorPosition, cursorPosition);
+      // Ajusta a posição do cursor considerando a diferença de caracteres
+      input.setSelectionRange(
+        cursorPosition + lengthDifference,
+        cursorPosition + lengthDifference
+      );
     }
 
     // Limpa erro do campo
@@ -95,7 +103,7 @@ export default function Contact() {
     // Aplica capitalização no nome antes de validar
     const name = formData.get("name");
     if (name) {
-      formData.set("name", capitalizeName(name));
+      formData.set("name", capitalizeWords(name));
     }
 
     // Valida o formulário
@@ -185,7 +193,7 @@ export default function Contact() {
                     required
                     type="text"
                     name="name"
-                    placeholder="Nome"
+                    placeholder="Nome Completo"
                     className={`w-full p-4 rounded-lg border focus:outline-none focus:ring-2 transition-all ${
                       errors.name
                         ? "border-red-500 focus:ring-red-500"
