@@ -25,7 +25,7 @@ export default function Project() {
       description:
         "Desenvolvimento de site institucional para vinícola, criando identidade visual que transmite tradição e frescor através de design limpo e conteúdo persuasivo.",
       image: img02,
-      github: "https://github.com/erickreisti/wineforlife",
+      github: "https://github.com/erickreisti/wine-for-life",
       live: "https://erickreisti.github.io/wine-for-life/",
     },
     {
@@ -111,19 +111,36 @@ export default function Project() {
                 >
                   {project.description}
                 </p>
-                <div className="flex gap-3">
+                <div className="flex flex-col gap-3">
+                  {/* Botão GitHub */}
                   {project.github ? (
                     <a
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-center font-medium transition"
+                      className="bg-blue-600 hover:bg-blue-700 text-white py-2 px-4 rounded-lg text-center font-medium transition"
                     >
-                      Github
+                      GitHub
                     </a>
                   ) : (
-                    <span className="flex-1 bg-gray-500 text-white py-2 px-4 rounded-lg text-center font-medium opacity-60 cursor-not-allowed">
-                      Github
+                    <span className="bg-gray-500 text-white py-2 px-4 rounded-lg text-center font-medium opacity-60 cursor-not-allowed">
+                      GitHub
+                    </span>
+                  )}
+
+                  {/* Botão Live - NOVO */}
+                  {project.live ? (
+                    <a
+                      href={project.live}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="bg-green-600 hover:bg-green-700 text-white py-2 px-4 rounded-lg text-center font-medium transition"
+                    >
+                      Live Demo
+                    </a>
+                  ) : (
+                    <span className="bg-gray-500 text-white py-2 px-4 rounded-lg text-center font-medium opacity-60 cursor-not-allowed">
+                      Live Demo
                     </span>
                   )}
                 </div>
