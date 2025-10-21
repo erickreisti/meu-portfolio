@@ -21,8 +21,9 @@ export default function Contact() {
     };
 
     try {
-      // URL correta para Vercel
-      const response = await fetch("/api/send-email", {
+      // URL absoluta para produção
+      const baseUrl = window.location.origin;
+      const response = await fetch(`${baseUrl}/api/send-email`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -30,14 +31,12 @@ export default function Contact() {
         body: JSON.stringify(data),
       });
 
-      // Melhor tratamento de erro
       if (!response.ok) {
         const errorText = await response.text();
         throw new Error(`HTTP ${response.status}: ${errorText}`);
       }
 
       const result = await response.json();
-
       setSuccess(true);
       form.current.reset();
       setTimeout(() => setSuccess(false), 5000);
