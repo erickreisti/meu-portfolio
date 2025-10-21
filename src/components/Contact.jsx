@@ -74,7 +74,7 @@ export default function Contact() {
                 <input
                   required
                   type="text"
-                  name="user_name"
+                  name="name"
                   placeholder="Nome"
                   className={`w-full p-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     darkMode
@@ -85,7 +85,7 @@ export default function Contact() {
                 <input
                   required
                   type="email"
-                  name="user_email"
+                  name="email"
                   placeholder="E-mail"
                   className={`w-full p-4 rounded-lg border focus:outline-none focus:ring-2 focus:ring-blue-500 ${
                     darkMode
