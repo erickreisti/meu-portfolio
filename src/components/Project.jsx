@@ -17,7 +17,7 @@ export default function Project() {
         "Plataforma de cursos fullstack com stack moderna: catálogo, carrinho, checkout, dashboard de aluno e adminitrador integrados.",
       image: img01,
       github: "https://github.com/erickreisti/fabioportifolio",
-      live: null,
+      live: "https://codecraft-academy-three.vercel.app/",
     },
     {
       id: 2,
